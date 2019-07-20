@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AppCenter.Crashes;
 using MvvmHelpers;
 using MyLoL.Views;
 using RiotSharp;
@@ -30,6 +31,7 @@ namespace MyLoL.ViewModels
         {
             if(String.IsNullOrEmpty(Summoner))
             {
+                Crashes.GenerateTestCrash();
                 return;
             }
 
