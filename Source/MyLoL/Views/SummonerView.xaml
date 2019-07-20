@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Title="Summoner Profile" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MyLoL.Views.SummonerView">
+    <ContentPage.Content>
+        <Grid Margin="15,0" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="70*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid HorizontalOptions="FillAndExpand" Margin="10,15">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="{Binding ProfileIcon}" HeightRequest="100" WidthRequest="100" Aspect="AspectFit" />
+                <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand" Margin="15,0">
+                    <Label Text="{Binding CurrentSummoner.Name}" FontAttributes="Bold" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Level: "/>
+                        <Label Text="{Binding CurrentSummoner.Level}"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            
+            <Button Text="Get Summoner Matches" Grid.Row="1" HorizontalOptions="FillAndExpand" Margin="0,15" Command="{Binding GetMatchesCommand}"/>
+            
+            <ListView Grid.Row="2" HasUnevenRows="true" SeparatorVisibility="None" ItemsSource="{Binding MatchesItemCollection}" IsRefreshing="{Binding IsBusy}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="150">
+                            <Grid HorizontalOptions="FillAndExpand" Margin="10,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="{Binding ChampionImage}" HeightRequest="100" WidthRequest="100" Aspect="AspectFit" />
+                            <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand" Margin="15,0">
+                                <Label Text="{Binding MatchInformation.Role}" FontAttributes="Bold" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Played: "/>
+                                    <Label Text="{Binding MatchDate}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
