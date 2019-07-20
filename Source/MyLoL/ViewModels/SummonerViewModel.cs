@@ -7,6 +7,8 @@ using RiotSharp.Endpoints.SummonerEndpoint;
 using Xamarin.Forms;
 using System.Linq;
 using System.Diagnostics;
+using Microsoft.AppCenter.Crashes;
+using System.Collections.Generic;
 
 namespace MyLoL.ViewModels
 {
@@ -42,6 +44,7 @@ namespace MyLoL.ViewModels
             IsBusy = true;
             try
             {
+                throw new RiotSharpException("Error from the Mobile App", System.Net.HttpStatusCode.BadRequest);
                 var api = RiotApi.GetDevelopmentInstance(Constants.APIKEY);
                 var matchList = await api.Match.GetMatchListAsync(RiotSharp.Misc.Region.Na, CurrentSummoner.AccountId);
                 var champions = await api.StaticData.Champions.GetAllAsync("9.14.1");
@@ -67,11 +70,16 @@ namespace MyLoL.ViewModels
             }
             catch (RiotSharpException ex)
             {
-                await CurrentPage.DisplayAlert("My LoL", "Summoner doesn't exists", "Ok");
+                await CurrentPage.DisplayAlert("My LoL", "Error getting matches information", "Ok");
             }
             catch (Exception ex)
             {
-                await CurrentPage.DisplayAlert("My LoL", "Not controller exception", "Ok");
+                var properties = new Dictionary<string, string> {
+                    { "Summoner", CurrentSummoner.Name }
+                };
+
+                Crashes.TrackError(ex, properties);
+                await CurrentPage.DisplayAlert("My LoL", "Bad exception", "Ok");
             }
             finally
             {
