@@ -13,7 +13,9 @@
                   <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Source="{Binding ProfileIcon}" HeightRequest="100" WidthRequest="100" Aspect="AspectFit" />
+                <Frame Grid.Column="0" HeightRequest="100" WidthRequest="100" BackgroundColor="DarkSlateGray" >
+                    <Image Source="{Binding ProfileIcon}" HeightRequest="100" WidthRequest="100" Aspect="AspectFit" />
+                </Frame>
                 <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand" Margin="15,0">
                     <Label Text="{Binding CurrentSummoner.Name}" FontAttributes="Bold" />
                     <StackLayout Orientation="Horizontal">
