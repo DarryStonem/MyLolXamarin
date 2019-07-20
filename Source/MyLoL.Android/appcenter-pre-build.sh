@@ -1,6 +1,6 @@
 # Updating ids for replacement
 
-IdFile=$BUILD_REPOSITORY_LOCALPATH/SourceCode/ProField/Helpers/Constants.cs
+IdFile=$BUILD_REPOSITORY_LOCALPATH/Source/MyLoL/Constants.cs
 
 sed -i '' "s#LOLAPIKEY#$LOLAPIKEY#g" $IdFile
 sed -i '' "s#APPCENTERIOS#$APPCENTERIOS#g" $IdFile
