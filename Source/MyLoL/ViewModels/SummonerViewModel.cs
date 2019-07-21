@@ -32,7 +32,7 @@ namespace MyLoL.ViewModels
             }
         }
 
-        public string ProfileIcon => String.Format("http://ddragon.leagueoflegends.com/cdn/9.14.1/img/profileicon/{0}.png", CurrentSummoner.ProfileIconId);
+        public string ProfileIcon => String.Format("https://ddragon.leagueoflegends.com/cdn/9.14.1/img/profileicon/{0}.png", CurrentSummoner.ProfileIconId);
 
         public SummonerViewModel()
         {
@@ -44,7 +44,7 @@ namespace MyLoL.ViewModels
             IsBusy = true;
             try
             {
-                throw new RiotSharpException("Error from the Mobile App", System.Net.HttpStatusCode.BadRequest);
+                //throw new RiotSharpException("Error from the Mobile App", System.Net.HttpStatusCode.BadRequest);
                 var api = RiotApi.GetDevelopmentInstance(Constants.APIKEY);
                 var matchList = await api.Match.GetMatchListAsync(RiotSharp.Misc.Region.Na, CurrentSummoner.AccountId);
                 var champions = await api.StaticData.Champions.GetAllAsync("9.14.1");
@@ -63,28 +63,34 @@ namespace MyLoL.ViewModels
                 {
                     var match = new MatchesViewModel(item);
                     match.Champion = champions.Champions.Values.FirstOrDefault(x => x.Id == match.MatchInformation.ChampionID);
-                    match.ChampionImage = $"http://ddragon.leagueoflegends.com/cdn/9.14.1/img/champion/{match.Champion.Image.Full}";
+                    match.ChampionImage = $"https://ddragon.leagueoflegends.com/cdn/9.14.1/img/champion/{match.Champion.Image.Full}";
                     Debug.WriteLine(match.ChampionImage);
                     MatchesItemCollection.Add(match);
                 }
             }
             catch (RiotSharpException ex)
             {
+                ReportCrash(ex);
                 await CurrentPage.DisplayAlert("My LoL", "Error getting matches information", "Ok");
             }
             catch (Exception ex)
             {
-                var properties = new Dictionary<string, string> {
-                    { "Summoner", CurrentSummoner.Name }
-                };
-
-                Crashes.TrackError(ex, properties);
+                ReportCrash(ex);
                 await CurrentPage.DisplayAlert("My LoL", "Bad exception", "Ok");
             }
             finally
             {
                 IsBusy = false;
             }
+        }
+
+        private void ReportCrash(Exception ex)
+        {
+            var properties = new Dictionary<string, string> {
+                    { "Summoner", CurrentSummoner.Name }
+                };
+
+            Crashes.TrackError(ex, properties);
         }
     }
 }
