@@ -4,7 +4,7 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" Margin="15,0">
             <Entry Text="{Binding Summoner, Mode=TwoWay}" Keyboard="Plain" />
-            <Button Text="Search Summoner" Command="{Binding GetSummonerCommand}"/>
+            <Button Text="Buscar" Command="{Binding GetSummonerCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
