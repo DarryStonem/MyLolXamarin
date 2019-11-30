@@ -19,7 +19,6 @@
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.6.2" />
     <PackageReference Include="Humanizer.Core" Version="2.7.9" />
     <PackageReference Include="Microsoft.AppCenter.Data" Version="2.6.2" />
-    <PackageReference Include="RiotNet" Version="8.2.0" />
     <PackageReference Include="Microsoft.AppCenter.Auth" Version="2.6.2" />
   </ItemGroup>
   <ItemGroup>
