@@ -9,6 +9,7 @@ using System.Linq;
 using System.Diagnostics;
 using Microsoft.AppCenter.Crashes;
 using System.Collections.Generic;
+using Microsoft.AppCenter.Data;
 
 namespace MyLoL.ViewModels
 {
@@ -44,7 +45,6 @@ namespace MyLoL.ViewModels
             IsBusy = true;
             try
             {
-                //throw new RiotSharpException("Error from the Mobile App", System.Net.HttpStatusCode.BadRequest);
                 var api = RiotApi.GetDevelopmentInstance(Constants.APIKEY);
                 var matchList = await api.Match.GetMatchListAsync(RiotSharp.Misc.Region.Na, CurrentSummoner.AccountId);
                 var champions = await api.StaticData.Champions.GetAllAsync("9.14.1");
@@ -67,6 +67,8 @@ namespace MyLoL.ViewModels
                     Debug.WriteLine(match.ChampionImage);
                     MatchesItemCollection.Add(match);
                 }
+
+                SaveToAzure();
             }
             catch (RiotSharpException ex)
             {
@@ -82,6 +84,17 @@ namespace MyLoL.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        private async void SaveToAzure()
+        {
+            SummonerAzure summoner = new SummonerAzure
+            {
+                Name = CurrentSummoner.Name,
+                Level = CurrentSummoner.Level
+            };
+
+            await Data.CreateAsync(summoner.Id.ToString(), summoner, DefaultPartitions.UserDocuments);
         }
 
         private void ReportCrash(Exception ex)

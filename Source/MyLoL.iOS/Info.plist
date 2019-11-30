@@ -34,5 +34,18 @@
     <string>MyLoL</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+    <key>CFBundleURLTypes</key>
+<array>
+  <dict>
+    <key>CFBundleTypeRole</key>
+    <string>Editor</string>
+    <key>CFBundleURLName</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>msalb6c11ce4-8ea1-4601-961a-38b36a5caea6</string>
+    </array>
+  </dict>
+</array>
 </dict>
 </plist>

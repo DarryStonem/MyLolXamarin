@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AppCenter.Auth;
 using Microsoft.AppCenter.Crashes;
 using MvvmHelpers;
 using MyLoL.Views;
+using RiotNet;
+using RiotNet.Models;
 using RiotSharp;
 using Xamarin.Forms;
 
@@ -35,20 +38,23 @@ namespace MyLoL.ViewModels
                 return;
             }
 
+            Auth.SignOut();
+            UserInformation userInfo = await Auth.SignInAsync();
+
             try
             {
                 var api = RiotApi.GetDevelopmentInstance(Constants.APIKEY);
                 var summoner = await api.Summoner.GetSummonerByNameAsync(RiotSharp.Misc.Region.Na, Summoner);
-                
+
                 Application.Current.MainPage = new NavigationPage(new SummonerView(summoner));
             }
             catch (RiotSharpException ex)
             {
-                await CurrentPage.DisplayAlert("My LoL", "Summoner doesn't exists", "Ok");
+                await Application.Current.MainPage.DisplayAlert("My LoL", "Summoner doesn't exists", "Ok");
             }
             catch (Exception ex)
             {
-                await CurrentPage.DisplayAlert("My LoL", "Not controller exception", "Ok");
+                await Application.Current.MainPage.DisplayAlert("My LoL", "Summoner doesn't exists", "Ok");
             }
         }
     }

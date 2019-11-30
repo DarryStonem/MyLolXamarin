@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Auth;
+using Microsoft.AppCenter.Data;
 using UIKit;
 
 namespace MyLoL.iOS
@@ -24,6 +27,8 @@ namespace MyLoL.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+
+            AppCenter.Start(Constants.AppCenteriOS, typeof(Data), typeof(Auth));
 
             return base.FinishedLaunching(app, options);
         }

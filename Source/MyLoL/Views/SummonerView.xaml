@@ -25,7 +25,7 @@
                 </StackLayout>
             </Grid>
             
-            <Button Text="Get Summoner Matches" Grid.Row="1" HorizontalOptions="FillAndExpand" Margin="0,15" Command="{Binding GetMatchesCommand}"/>
+            <Button Text="Save and get matches" Grid.Row="1" HorizontalOptions="FillAndExpand" Margin="0,15" Command="{Binding GetMatchesCommand}"/>
             
             <ListView Grid.Row="2" HasUnevenRows="true" SeparatorVisibility="None" ItemsSource="{Binding MatchesItemCollection}" IsRefreshing="{Binding IsBusy}">
                 <ListView.ItemTemplate>

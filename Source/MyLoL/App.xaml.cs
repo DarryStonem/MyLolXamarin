@@ -5,6 +5,8 @@ using Xamarin.Forms.Xaml;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Data;
+using Microsoft.AppCenter.Auth;
 
 namespace MyLoL
 {
@@ -20,7 +22,7 @@ namespace MyLoL
         protected override void OnStart()
         {
             AppCenter.Start(String.Format("android={0};", Constants.AppCenterAndroid) + String.Format("ios={0}", Constants.AppCenteriOS),
-                  typeof(Analytics), typeof(Crashes));
+                  typeof(Analytics), typeof(Crashes), typeof(Data), typeof(Auth));
         }
 
         protected override void OnSleep()
