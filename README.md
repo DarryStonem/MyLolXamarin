@@ -1,7 +1,12 @@
 # MyLoLXamarin
 A League of Legends app using Xamarin Forms.
 
-**Android** [![Build status](https://build.appcenter.ms/v0.1/apps/150743b4-f187-4e54-b973-e25df37608d2/branches/master/badge)](https://appcenter.ms) **iOS** [![Build status](https://build.appcenter.ms/v0.1/apps/837ee705-5f24-4760-810c-d5b7a29986b0/branches/master/badge)](https://appcenter.ms)
+**Android** [![Build status](https://build.appcenter.ms/v0.1/apps/150743b4-f187-4e54-b973-e25df37608d2/branches/master/badge)](https://appcenter.ms) 
+
+**iOS** [![Build status](https://build.appcenter.ms/v0.1/apps/837ee705-5f24-4760-810c-d5b7a29986b0/branches/master/badge)](https://appcenter.ms)
+
+**Android Bitrise**
+[![Build Status](https://app.bitrise.io/app/47e3ef511a608aed/status.svg?token=h8AGaVMJHtWBLEp0SsMsQw&branch=master)](https://app.bitrise.io/app/47e3ef511a608aed)
 
 ## Setup project
 
