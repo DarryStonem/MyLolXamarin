@@ -36,8 +36,8 @@ namespace MyLoL.ViewModels
                 return;
             }
 
-            Auth.SignOut();
-            UserInformation userInfo = await Auth.SignInAsync();
+            // Auth.SignOut();
+            //UserInformation userInfo = await Auth.SignInAsync();
 
             try
             {
