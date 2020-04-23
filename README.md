@@ -18,7 +18,7 @@ This project also uses [AppCenter](http://appcenter.ms) for Analytics and Crashe
 
 In `Source/MyLoL/Constants.cs` you can change the variables for local usage. `APIKEY`, `AppCenteriOS` and `AppCenterAndroid`. This should make the project works using emulator. 
 
-It doesn't matter if you run the app locally using a simulator. You can have your information right in the mobile app :) 
+It doesn't matter if you run the app locally or using a simulator. You can have your information right in the mobile app :) 
 
 ## Credits
 
