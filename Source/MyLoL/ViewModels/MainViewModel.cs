@@ -38,9 +38,6 @@ namespace MyLoL.ViewModels
                 return;
             }
 
-            Auth.SignOut();
-            UserInformation userInfo = await Auth.SignInAsync();
-
             try
             {
                 var api = RiotApi.GetDevelopmentInstance(Constants.APIKEY);
