@@ -4,8 +4,6 @@ using Microsoft.AppCenter.Auth;
 using Microsoft.AppCenter.Crashes;
 using MvvmHelpers;
 using MyLoL.Views;
-using RiotNet;
-using RiotNet.Models;
 using RiotSharp;
 using Xamarin.Forms;
 
@@ -38,8 +36,8 @@ namespace MyLoL.ViewModels
                 return;
             }
 
-            Auth.SignOut();
-            UserInformation userInfo = await Auth.SignInAsync();
+            // Auth.SignOut();
+            //UserInformation userInfo = await Auth.SignInAsync();
 
             try
             {

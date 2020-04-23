@@ -22,7 +22,7 @@ namespace MyLoL
         protected override void OnStart()
         {
             AppCenter.Start(String.Format("android={0};", Constants.AppCenterAndroid) + String.Format("ios={0}", Constants.AppCenteriOS),
-                  typeof(Analytics), typeof(Crashes), typeof(Data), typeof(Auth));
+                  typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()

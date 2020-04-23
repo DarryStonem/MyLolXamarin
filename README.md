@@ -1,7 +1,12 @@
 # MyLoLXamarin
 A League of Legends app using Xamarin Forms.
 
-**Android** [![Build status](https://build.appcenter.ms/v0.1/apps/150743b4-f187-4e54-b973-e25df37608d2/branches/master/badge)](https://appcenter.ms) **iOS** [![Build status](https://build.appcenter.ms/v0.1/apps/837ee705-5f24-4760-810c-d5b7a29986b0/branches/master/badge)](https://appcenter.ms)
+**Android** [![Build status](https://build.appcenter.ms/v0.1/apps/150743b4-f187-4e54-b973-e25df37608d2/branches/master/badge)](https://appcenter.ms) 
+
+**iOS** [![Build status](https://build.appcenter.ms/v0.1/apps/837ee705-5f24-4760-810c-d5b7a29986b0/branches/master/badge)](https://appcenter.ms)
+
+**Android Bitrise**
+[![Build Status](https://app.bitrise.io/app/47e3ef511a608aed/status.svg?token=h8AGaVMJHtWBLEp0SsMsQw&branch=master)](https://app.bitrise.io/app/47e3ef511a608aed)
 
 ## Setup project
 
@@ -13,7 +18,7 @@ This project also uses [AppCenter](http://appcenter.ms) for Analytics and Crashe
 
 In `Source/MyLoL/Constants.cs` you can change the variables for local usage. `APIKEY`, `AppCenteriOS` and `AppCenterAndroid`. This should make the project works using emulator. 
 
-It doesn't matter if you run the app locally using a simulator. You can have your information right in the mobile app :) 
+It doesn't matter if you run the app locally or using a simulator. You can have your information right in the mobile app :) 
 
 ## Credits
 
