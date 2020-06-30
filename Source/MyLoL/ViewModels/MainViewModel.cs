@@ -36,9 +36,6 @@ namespace MyLoL.ViewModels
                 return;
             }
 
-            // Auth.SignOut();
-            //UserInformation userInfo = await Auth.SignInAsync();
-
             try
             {
                 var api = RiotApi.GetDevelopmentInstance(Constants.APIKEY);
@@ -52,6 +49,7 @@ namespace MyLoL.ViewModels
             }
             catch (Exception ex)
             {
+                Crashes.TrackError(ex);
                 await Application.Current.MainPage.DisplayAlert("My LoL", "Summoner doesn't exists", "Ok");
             }
         }
