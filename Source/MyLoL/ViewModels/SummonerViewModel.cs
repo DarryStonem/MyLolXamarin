@@ -67,8 +67,6 @@ namespace MyLoL.ViewModels
                     Debug.WriteLine(match.ChampionImage);
                     MatchesItemCollection.Add(match);
                 }
-
-                SaveToAzure();
             }
             catch (RiotSharpException ex)
             {
@@ -84,17 +82,6 @@ namespace MyLoL.ViewModels
             {
                 IsBusy = false;
             }
-        }
-
-        private async void SaveToAzure()
-        {
-            SummonerAzure summoner = new SummonerAzure
-            {
-                Name = CurrentSummoner.Name,
-                Level = CurrentSummoner.Level
-            };
-
-            await Data.CreateAsync(summoner.Id.ToString(), summoner, DefaultPartitions.UserDocuments);
         }
 
         private void ReportCrash(Exception ex)
