@@ -50,7 +50,7 @@ namespace MyLoL.ViewModels
             catch (Exception ex)
             {
                 Crashes.TrackError(ex);
-                await Application.Current.MainPage.DisplayAlert("My LoL", "Summoner doesn't exists", "Ok");
+                await Application.Current.MainPage.DisplayAlert("My LoL", "Try again later.", "Ok");
             }
         }
     }
