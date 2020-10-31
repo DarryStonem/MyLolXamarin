@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AppCenter.Auth;
 using Microsoft.AppCenter.Crashes;
 using MvvmHelpers;
 using MyLoL.Views;
@@ -45,6 +45,12 @@ namespace MyLoL.ViewModels
             }
             catch (RiotSharpException ex)
             {
+                var properties = new Dictionary<string, string> {
+                    { "Summoner", Summoner },
+                    { "Version", "1.2" }
+                };
+
+                Crashes.TrackError(ex, properties);
                 await Application.Current.MainPage.DisplayAlert("My LoL", "Summoner doesn't exists", "Ok");
             }
             catch (Exception ex)
